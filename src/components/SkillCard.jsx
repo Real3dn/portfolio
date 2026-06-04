@@ -19,7 +19,7 @@ export default function SkillCard({ skill, index }) {
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
+      // transition={{ delay: index * 0.1 }}
       whileHover={{ scale: 1.05 }}
       className="group glass rounded-xl p-6 text-center cursor-pointer transition-all duration-300 hover:shadow-xl relative overflow-hidden"
     >

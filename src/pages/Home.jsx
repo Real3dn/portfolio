@@ -97,7 +97,10 @@ export default function Home() {
       <section className="py-20 px-4" id="skills">
         <div className="max-w-6xl mx-auto">
           <motion.div
-
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
