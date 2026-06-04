@@ -6,7 +6,7 @@ const experience = [
   {
     year: '2026 - Present',
     title: 'Full Stack Developer',
-    company: 'Digital Solutions Ltd.',
+    company: 'Freelance.',
     description: 'Built and maintained multiple client projects using React, Laravel, and MySQL.',
   },
     {
@@ -19,7 +19,7 @@ const experience = [
     year: '2022 - 2024',
     title: 'Backend Developer',
     // company: 'WebCraft Agency',
-    description: 'Developed RESTful APIs and database architectures for various web applications.',
+    description: 'Developed RESTful APIs and databases for various web applications.',
   },
   {
     year: '2021 - 2022',
@@ -61,12 +61,11 @@ export default function About() {
             <h2 className="text-2xl font-bold mb-4">Who I Am</h2>
             <div className="space-y-4 text-[var(--text-secondary)]">
               <p>
-                I'm a passionate full-stack web developer with experience of 
+                I'm a computer engineer specialized in full-stack web developer with experience of 
                 building modern web applications.
               </p>
               <p>
-                I specialize in building performant, user-friendly applications using modern 
-                frameworks and best practices.
+                I enjoy coding.
               </p>
               <p>
 

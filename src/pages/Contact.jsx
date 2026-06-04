@@ -55,7 +55,7 @@ export default function Contact() {
             </span>
           </h1>
           <p className="text-[var(--text-secondary)] max-w-xl mx-auto text-lg">
-            Have a project in mind? Let's work together to bring your ideas to life.
+            Have a project in mind? Let's work together to bring your ideas to life!
           </p>
         </motion.div>
 
