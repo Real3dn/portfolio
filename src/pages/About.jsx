@@ -7,7 +7,7 @@ const experience = [
     year: '2026 - Present',
     title: 'Full Stack Developer',
     company: 'Freelance.',
-    description: 'Built and maintained multiple client projects using React, Laravel, and MySQL.',
+    description: 'Built and maintained multiple client projects using React, Flask, Laravel, and MySQL.',
   },
     {
     year: '2024 - 2025',

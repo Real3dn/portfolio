@@ -16,13 +16,14 @@ export default function SkillCard({ skill, index }) {
 
   return (
     <motion.div
-      // initial={{ opacity: 0, scale: 0.8 }}
+      // initial={{ opacity: 0.5, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       whileHover={{ scale: 1.05 }}
       className="group glass rounded-xl p-6 text-center cursor-pointer transition-all duration-300 hover:shadow-xl relative overflow-hidden"
     >
+      
       {/* Background glow on hover */}
       <div 
         className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
