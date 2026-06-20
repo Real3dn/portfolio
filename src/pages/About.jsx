@@ -9,7 +9,7 @@ const experience = [
     company: 'Freelance.',
     description: 'Built and maintained multiple client projects using React, Flask, Laravel, and MySQL.',
   },
-    {
+  {
     year: '2024 - 2025',
     title: 'Frontend Developer',
     // company: 'WebCraft Agency',
@@ -68,7 +68,6 @@ export default function About() {
                 I enjoy coding.
               </p>
               <p>
-
               </p>
             </div>
           </motion.div>

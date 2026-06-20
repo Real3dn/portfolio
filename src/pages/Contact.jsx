@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FiMail, FiPhone, FiMapPin, FiGithub, FiLinkedin, FiTwitter, FiCopy, FiCheck } from 'react-icons/fi'
+import { FiMail, FiPhone, FiMapPin, FiGithub, FiCopy, FiCheck } from 'react-icons/fi'
 import { useState } from 'react'
 
 const contactInfo = [
@@ -28,8 +28,6 @@ const contactInfo = [
 
 const socialLinks = [
   { icon: <FiGithub />, label: 'GitHub', href: 'https://github.com/Real3dn' },
-//   { icon: <FiLinkedin />, label: 'LinkedIn', href: 'https://linkedin.com/in/Real3dn' },
-//   { icon: <FiTwitter />, label: 'Twitter', href: 'https://twitter.com/johndoe' },
 ]
 
 export default function Contact() {
