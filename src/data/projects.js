@@ -1,10 +1,17 @@
+import ecommerceImg from '../assets/screenshots/ecommerce.png'
+import eventbookingImg from '../assets/screenshots/eventbooking.png'
+import frontcommerceImg from '../assets/screenshots/frontcommerce.png'
+import frontcommerce1Img from '../assets/screenshots/frontcommerce1.png'
+import proexamImg from '../assets/screenshots/proexam.png'
+
+
 export const projects = [
       {
     id: 1,
     title: 'Event Booking System',
     description: 'Full-featured online booking system with ability to create, edit and delete events.',
     icon: '📝',
-    screenshot: '/public/screenshots/eventbooking.png',
+    screenshot: eventbookingImg,
     technologies: ['React', 'Flask', 'MySQL','TailwindCSS'],
     github: 'https://github.com/Real3dn/EventBookingSystem',
     live: 'https://real3dneventbooking.netlify.app/',
@@ -14,7 +21,7 @@ export const projects = [
     title: 'E-Commerce Application',
     description: 'Full Stack E-Commerce Web Application.',
     icon: '🛍️',
-    screenshot: 'public/screenshots/ecommerce.png',
+    screenshot: ecommerceImg,
 
     technologies: ['React', 'Flask', 'SQLite','TailwindCSS'],
     github: 'https://github.com/Real3dn/ECommerceApplication',
@@ -25,7 +32,7 @@ export const projects = [
     title: 'Pro Exam',
     description: 'AI-Powered Platform for Studying.',
     icon: '📚',
-    screenshot: 'public/screenshots/proexam.png',
+    screenshot: proexamImg,
     technologies: ['React',"Django","JWT","Vite","SQLite"],
     github: 'https://github.com/Real3dn/ProExam',
     //live: 'https://poetic-khapse-f62ada.netlify.app/home',
@@ -35,7 +42,7 @@ export const projects = [
     title: 'E-Commerce Frontend',
     description: 'Online Store Front.',
     icon: '🛍️',
-    screenshot: 'public/screenshots/frontcommerce.png',
+    screenshot: frontcommerceImg,
     technologies: ['React'],
     github: 'https://github.com/Real3dn/odin-shoppingcart',
     live: 'https://poetic-khapse-f62ada.netlify.app/home',
