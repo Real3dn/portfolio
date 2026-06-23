@@ -5,5 +5,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000
+  },
+    publicDir: 'public',
+  build: {
+    assetsDir: 'assets',
+    // Ensure public files are copied to dist
+    copyPublicDir: true,
   }
 })
