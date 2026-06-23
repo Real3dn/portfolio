@@ -1,1 +1,5 @@
+# Allow access to screenshot images
+/screenshots/*  /screenshots/:splat  200
+
+# SPA fallback for everything else
 /*  /index.html  200
