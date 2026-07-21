@@ -5,7 +5,7 @@ import SkillCard from '../components/SkillCard'
 import ProjectCard from '../components/ProjectCard'
 import { skills } from '../data/skills'
 import { projects } from '../data/projects'
-import { FiArrowRight, FiTerminal, FiDatabase, FiLayout, FiCpu } from 'react-icons/fi'
+import { FiArrowRight, FiTerminal, FiDatabase, FiLayout, FiCpu, FiFolder } from 'react-icons/fi'
 
 export default function Home() {
   const featuredProjects = projects.slice(0, 3)
@@ -20,43 +20,51 @@ export default function Home() {
         <section className="py-12 sm:py-20 lg:py-24 border-subtle-b">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
             
-            {/* Left Column: Authoritative Editorial Statement */}
-            <div className="lg:col-span-8 space-y-8">
+            {/* Left Column: Primary Focus on Name & Engineering Role */}
+            <div className="lg:col-span-8 space-y-6">
+              
+              {/* Eyebrow badge */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 className="inline-flex items-center gap-2 px-3 py-1 rounded border-subtle bg-[var(--bg-surface)] text-[var(--text-muted)] font-mono text-xs uppercase tracking-widest"
               >
-                <span>Adnan Al-Qaba</span>
-                <span>//</span>
-                <span className="text-[var(--text-secondary)]">Full-Stack Engineer</span>
+                <span>Full-Stack Engineering</span>
               </motion.div>
 
-              <motion.h1
+              {/* Name Prominently First */}
+              <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.1]"
+                className="space-y-2"
               >
-                Building scalable web systems, REST APIs & modern user interfaces.
-              </motion.h1>
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.05]">
+                  Adnan Al-Qaba
+                </h1>
+                <p className="text-xl sm:text-2xl font-semibold text-[var(--text-secondary)] tracking-tight">
+                  Full-Stack Web Developer & Computer Engineer
+                </p>
+              </motion.div>
 
+              {/* Non-Generic Specific Technical Description */}
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
                 className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed font-normal"
               >
-                Computer engineer specialized in full-stack application development. 
-                Focused on clean architecture, database design, and high-performance React and Python/PHP backends.
+                Computer engineer building full-stack web platforms, custom database backends, and responsive user interfaces. 
+                Focused on React architectures, Python REST services (Flask & Django), and database management with MySQL and SQLite.
               </motion.p>
 
+              {/* Actions */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 }}
-                className="flex flex-wrap items-center gap-4 pt-2"
+                className="flex flex-wrap items-center gap-4 pt-4"
               >
                 <Link
                   to="/projects"
@@ -84,7 +92,7 @@ export default function Home() {
             >
               <div className="flex items-center justify-between pb-4 border-subtle-b">
                 <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)]">
-                  System Metadata
+                  Developer Specs
                 </span>
                 <span className="flex h-2 w-2 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -94,18 +102,18 @@ export default function Home() {
 
               <div className="space-y-4 font-mono text-xs">
                 <div>
-                  <span className="text-[var(--text-muted)] block text-[10px] uppercase tracking-wider mb-1">Role & Focus</span>
-                  <span className="text-[var(--text-primary)] font-medium">Full-Stack Engineer / Web Systems</span>
+                  <span className="text-[var(--text-muted)] block text-[10px] uppercase tracking-wider mb-1">Engineer</span>
+                  <span className="text-[var(--text-primary)] font-medium">Adnan Al-Qaba</span>
                 </div>
 
                 <div>
-                  <span className="text-[var(--text-muted)] block text-[10px] uppercase tracking-wider mb-1">Primary Tech Stack</span>
-                  <span className="text-[var(--text-secondary)]">React, Flask, Django, Laravel, MySQL, SQLite</span>
+                  <span className="text-[var(--text-muted)] block text-[10px] uppercase tracking-wider mb-1">Specialization</span>
+                  <span className="text-[var(--text-secondary)]">Full-Stack Web Development & System Design</span>
                 </div>
 
                 <div>
-                  <span className="text-[var(--text-muted)] block text-[10px] uppercase tracking-wider mb-1">Core Philosophy</span>
-                  <span className="text-[var(--text-secondary)]">Type safety, API simplicity, minimalist UI</span>
+                  <span className="text-[var(--text-muted)] block text-[10px] uppercase tracking-wider mb-1">Stack</span>
+                  <span className="text-[var(--text-secondary)]">React, Flask, Django, Laravel, PHP, MySQL, SQLite</span>
                 </div>
               </div>
             </motion.div>
@@ -134,10 +142,50 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProjects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
+
+            {/* 4th Card: See All Projects Link Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+            >
+              <Link
+                to="/projects"
+                className="surface-card rounded-xl p-6 h-full flex flex-col justify-between group border-dashed hover:border-[var(--border-strong)] transition-all bg-[var(--bg-subtle)]/40 min-h-[320px]"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="px-2.5 py-1 rounded bg-[var(--bg-primary)] border-subtle font-mono text-[10px] uppercase tracking-wider text-[var(--text-muted)] flex items-center gap-1.5">
+                      <FiFolder className="text-xs" />
+                      <span>DIRECTORY</span>
+                    </span>
+                    <FiArrowRight className="text-base text-[var(--text-muted)] group-hover:text-[var(--text-primary)] group-hover:translate-x-1 transition-all" />
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight text-[var(--text-primary)] group-hover:text-emerald-500 transition-colors mb-2">
+                      See All Projects
+                    </h3>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      Browse full repository catalog including e-commerce platforms, exam tools, and voice recorders.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-subtle-t flex items-center justify-between text-xs font-mono text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
+                  <span>{projects.length} Total Modules</span>
+                  <span className="font-semibold flex items-center gap-1">
+                    <span>Explore</span>
+                    <span>→</span>
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
           </div>
         </section>
 
