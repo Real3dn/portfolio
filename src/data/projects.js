@@ -3,7 +3,7 @@ import eventbookingImg from '../assets/screenshots/eventbooking.png'
 import frontcommerceImg from '../assets/screenshots/frontcommerce.png'
 import frontcommerce1Img from '../assets/screenshots/frontcommerce1.png'
 import proexamImg from '../assets/screenshots/proexam.png'
-
+import whattowatch from '../assets/screenshots/whattowatch.png'
 
 export const projects = [
       {
@@ -37,8 +37,18 @@ export const projects = [
     github: 'https://github.com/Real3dn/ProExam',
     //live: 'https://poetic-khapse-f62ada.netlify.app/home',
   },
-    {
+        {
     id: 4,
+    title: 'What To Watch',
+    description: 'A Platform To Discover Movies.',
+    icon: '📚',
+    screenshot: whattowatch,
+    technologies: ['React',"SQLite","RESTful API"],
+    github: 'https://github.com/Real3dn/WhatToWatch',
+    //live: 'https://poetic-khapse-f62ada.netlify.app/home',
+  },
+    {
+    id: 5,
     title: 'E-Commerce Frontend',
     description: 'Online Store Front.',
     icon: '🛍️',
@@ -48,7 +58,7 @@ export const projects = [
     live: 'https://poetic-khapse-f62ada.netlify.app/home',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Sounder Recorder',
     description: 'Robust FLAC Voice Recorder',
     icon: '🎤',
