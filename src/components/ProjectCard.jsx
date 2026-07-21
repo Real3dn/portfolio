@@ -1,140 +1,97 @@
-// src/components/ProjectCard.jsx
-import { motion } from 'framer-motion'
-import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { FiGithub, FiArrowUpRight, FiLayers } from 'react-icons/fi'
 
-// Generate consistent gradient based on string
-function getGradient(str) {
-  const gradients = [
-    'from-blue-600 to-purple-700',
-    'from-cyan-600 to-blue-700',
-    'from-purple-600 to-pink-700',
-    'from-emerald-600 to-teal-700',
-    'from-orange-600 to-red-700',
-    'from-indigo-600 to-violet-700',
-    'from-rose-600 to-pink-700',
-    'from-teal-600 to-cyan-700',
-  ]
-  const index = str.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
-  return gradients[index % gradients.length]
-}
-
-export default function ProjectCard({ project, index }) {
+export default function ProjectCard({ project, index, isFeatured = false }) {
   const [imageError, setImageError] = useState(false)
   const hasScreenshot = project.screenshot && !imageError
 
   return (
-    <motion.div
-      // initial={{ opacity: 0, y: 30 }}
+    <motion.article
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -5 }}
-      className="group glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10"
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      className={`surface-card rounded-xl overflow-hidden flex flex-col justify-between group ${
+        isFeatured ? 'lg:col-span-2' : ''
+      }`}
     >
-      {/* Project Screenshot / Placeholder */}
-      <div className="relative overflow-hidden aspect-video">
-        {hasScreenshot ? (
-          <img
-            src={project.screenshot}
-            alt={`${project.title} preview`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            onError={() => setImageError(true)}
-            loading="lazy"
-          />
-        ) : (
-          // Auto-generated beautiful placeholder
-          <div className={`w-full h-full bg-gradient-to-br ${getGradient(project.title)} flex flex-col items-center justify-center p-6 text-white`}>
-            <h3 className="text-xl font-bold mb-3 text-center">{project.title}</h3>
-            <div className="flex flex-wrap gap-1.5 justify-center">
-              {project.technologies.slice(0, 3).map(tech => (
-                <span key={tech} className="px-2 py-0.5 text-xs rounded-full bg-white/20 backdrop-blur-sm">
-                  {tech}
-                </span>
-              ))}
+      <div>
+        {/* Image Container with precise framing */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--bg-subtle)] border-subtle-b">
+          {hasScreenshot ? (
+            <img
+              src={project.screenshot}
+              alt={`${project.title} interface preview`}
+              className="w-full h-full object-cover object-top filter  group-hover:grayscale-0 transition-all duration-500 group-hover:scale-[1.02]"
+              onError={() => setImageError(true)}
+              loading="lazy"
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center p-6 text-[var(--text-muted)]">
+              <FiLayers className="text-3xl mb-2 opacity-50" />
+              <span className="font-mono text-xs uppercase tracking-widest">{project.title}</span>
             </div>
-            {project.technologies.length > 3 && (
-              <span className="text-xs mt-1.5 opacity-70">
-                +{project.technologies.length - 3} more
-              </span>
-            )}
-          </div>
-        )}
-        
-        {/* Hover overlay with action buttons */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <div className="flex gap-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white/20 backdrop-blur-sm p-3 rounded-full text-white hover:bg-white/50 transition-all hover:scale-110"
-              onClick={(e) => e.stopPropagation()}
-              title="View source code"
-            >
-              <FiGithub size={22} />
-            </a>
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/20 backdrop-blur-sm p-3 rounded-full text-white hover:bg-white/50 transition-all hover:scale-110"
-                onClick={(e) => e.stopPropagation()}
-                title="View live demo"
-              >
-                <FiExternalLink size={22} />
-              </a>
-            )}
+          )}
+          
+          <div className="absolute top-3 left-3">
+            <span className="px-2.5 py-1 rounded bg-[var(--bg-primary)]/80 backdrop-blur-md border-subtle font-mono text-[10px] uppercase tracking-wider text-[var(--text-secondary)]">
+              0{project.id || index + 1}
+            </span>
           </div>
         </div>
+
+        {/* Content Body */}
+        <div className="p-6">
+          <div className="flex items-center justify-between gap-4 mb-2">
+            <h3 className="text-base sm:text-lg font-bold tracking-tight text-[var(--text-primary)] group-hover:text-neutral-400 dark:group-hover:text-white transition-colors">
+              {project.title}
+            </h3>
+          </div>
+
+          <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed mb-6 line-clamp-2">
+            {project.description}
+          </p>
+        </div>
       </div>
-      
-      {/* Project Info */}
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2 text-[var(--text-primary)] group-hover:text-blue-500 transition-colors">
-          {project.title}
-        </h3>
-        <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-2">
-          {project.description}
-        </p>
-        
-        {/* Technology Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
+
+      {/* Footer / Specs */}
+      <div className="px-6 pb-6">
+        <div className="flex flex-wrap gap-1.5 mb-5">
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-500 border border-blue-500/20"
+              className="px-2 py-0.5 rounded text-[10px] font-mono border-subtle bg-[var(--bg-subtle)] text-[var(--text-secondary)]"
             >
               {tech}
             </span>
           ))}
         </div>
-        
-        {/* Always visible Code & Preview buttons */}
-        <div className="flex gap-3 pt-2 border-t border-[var(--card-border)]">
+
+        <div className="flex items-center gap-4 pt-4 border-subtle-t text-xs font-mono">
           <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm text-[var(--text-secondary)] hover:text-blue-500 transition-colors font-medium"
+            className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors font-medium"
           >
-            <FiGithub size={16} />
-            Code
+            <FiGithub className="text-sm" />
+            <span>Source</span>
           </a>
+
           {project.live && (
             <a
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-[var(--text-secondary)] hover:text-blue-500 transition-colors font-medium"
+              className="inline-flex items-center gap-1 text-[var(--text-primary)] hover:text-emerald-500 transition-colors font-semibold ml-auto"
             >
-              <FiExternalLink size={16} />
-              Preview
+              <span>Live Demo</span>
+              <FiArrowUpRight className="text-sm" />
             </a>
           )}
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   )
 }

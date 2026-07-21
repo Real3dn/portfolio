@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ProjectCard from '../components/ProjectCard'
 import { projects } from '../data/projects'
+import BackgroundGrid from '../components/BackgroundGrid'
+import { FiSearch, FiFilter } from 'react-icons/fi'
 
 const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))]
 
@@ -17,57 +19,78 @@ export default function Projects() {
   })
 
   return (
-    <div className="pt-24 pb-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <div className="relative min-h-screen pt-28 pb-24 px-4 sm:px-6 lg:px-8">
+      <BackgroundGrid />
+
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.4 }}
+          className="pb-12 border-subtle-b mb-12"
         >
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
-              My Projects
-            </span>
+          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">
+            <span>Directory</span>
+            <span>//</span>
+            <span>Software & Web Modules</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
+            Projects & Case Studies
           </h1>
-          <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
-            Explore my work across different technologies and platforms.
+          <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-3 max-w-2xl font-normal">
+            A directory of full-stack applications, API integrations, and frontend interfaces built with React, Python, and PHP.
           </p>
         </motion.div>
 
-        {/* Filters */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-12">
-          <input
-            type="text"
-            placeholder="Search projects..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 px-4 py-2 rounded-xl glass text-[var(--text-primary)] placeholder-[var(--text-secondary)] outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
-          />
-          <div className="flex gap-2 flex-wrap">
+        {/* Minimal Technical Filter Toolbar */}
+        <div className="flex flex-col md:flex-row gap-4 mb-12 items-stretch md:items-center justify-between">
+          
+          {/* Search Input */}
+          <div className="relative flex-1 max-w-md">
+            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--text-muted)] text-sm" />
+            <input
+              type="text"
+              placeholder="Filter by title or technology..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 rounded text-xs font-mono bg-[var(--bg-surface)] border-subtle text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none focus:border-[var(--border-strong)] transition-colors"
+            />
+          </div>
+
+          {/* Technology Filter Chips */}
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--text-muted)] mr-1 flex items-center gap-1">
+              <FiFilter /> Filter:
+            </span>
+
             <button
               onClick={() => setFilter('All')}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              className={`px-2.5 py-1 rounded font-mono text-[10px] uppercase tracking-wider transition-all ${
                 filter === 'All'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                  : 'glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  ? 'bg-[var(--accent)] text-[var(--accent-foreground)] font-semibold'
+                  : 'border-subtle bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
             >
-              All
+              All [{projects.length}]
             </button>
+
             {allTechnologies.map(tech => (
               <button
                 key={tech}
                 onClick={() => setFilter(tech)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                className={`px-2.5 py-1 rounded font-mono text-[10px] uppercase tracking-wider transition-all ${
                   filter === tech
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                    : 'glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    ? 'bg-[var(--accent)] text-[var(--accent-foreground)] font-semibold'
+                    : 'border-subtle bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {tech}
               </button>
             ))}
           </div>
+
         </div>
 
         {/* Projects Grid */}
@@ -77,12 +100,18 @@ export default function Projects() {
           ))}
         </div>
 
+        {/* Empty State */}
         {filteredProjects.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-6xl mb-4">🔍</p>
-            <p className="text-[var(--text-secondary)] text-lg">No projects found matching your criteria.</p>
+          <div className="surface-card rounded-xl p-16 text-center">
+            <span className="font-mono text-xs uppercase tracking-widest text-[var(--text-muted)] block mb-2">
+              [ NO RECORDS FOUND ]
+            </span>
+            <p className="text-sm text-[var(--text-secondary)] font-mono">
+              No software projects match the specified query filters.
+            </p>
           </div>
         )}
+
       </div>
     </div>
   )

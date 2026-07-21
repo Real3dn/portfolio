@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../hooks/useTheme'
+import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi'
 
 const navLinks = [
-  { path: '/', label: 'Home' },
-  { path: '/projects', label: 'Projects' },
-  { path: '/about', label: 'About' },
-  { path: '/contact', label: 'Contact' },
+  { path: '/', label: 'Overview', code: '01' },
+  { path: '/projects', label: 'Projects', code: '02' },
+  { path: '/about', label: 'About', code: '03' },
+  { path: '/contact', label: 'Contact', code: '04' },
 ]
 
 export default function Navbar() {
@@ -23,84 +24,79 @@ export default function Navbar() {
   }, [])
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[var(--nav-bg)] backdrop-blur-xl shadow-lg'
-          : 'bg-transparent'
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 border-subtle-b ${
+        scrolled 
+          ? 'bg-[var(--bg-primary)]/85 backdrop-blur-md shadow-sm' 
+          : 'bg-[var(--bg-primary)]/50 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="text-2xl font-bold">
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
+        <div className="flex items-center justify-between h-16 sm:h-18">
+          
+          {/* Logo & Status */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-primary)] group-hover:text-neutral-400 transition-colors">
               Real3dn
+            </span>
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono border-subtle bg-[var(--bg-subtle)] text-[var(--text-muted)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`relative text-sm font-medium transition-colors ${
-                  location.pathname === link.path
-                    ? 'text-blue-500'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                }`}
-              >
-                {link.label}
-                {location.pathname === link.path && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"
-                  />
-                )}
-              </Link>
-            ))}
-            
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="relative w-12 h-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-0.5 transition-all"
-            >
-              <motion.div
-                animate={{ x: darkMode ? 24 : 0 }}
-                className="w-5 h-5 rounded-full bg-white shadow-md flex items-center justify-center"
-              >
-                {darkMode ? '🌙' : '☀️'}
-              </motion.div>
-            </button>
-          </div>
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.path
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`text-xs font-medium tracking-tight transition-colors flex items-center gap-1.5 ${
+                    isActive
+                      ? 'text-[var(--text-primary)] font-semibold'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  }`}
+                >
+                  <span className="font-mono text-[10px] text-[var(--text-muted)]">{link.code}.</span>
+                  <span>{link.label}</span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavIndicator"
+                      className="absolute -bottom-[21px] left-0 right-0 h-[2px] bg-[var(--text-primary)]"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              )
+            })}
 
-          {/* Mobile buttons */}
-          <div className="md:hidden flex items-center gap-4">
+            {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="text-xl"
+              className="p-2 rounded border-subtle bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--border-strong)] transition-all"
+              aria-label="Toggle theme"
             >
-              {darkMode ? '🌙' : '☀️'}
+              {darkMode ? <FiSun className="text-sm" /> : <FiMoon className="text-sm" />}
             </button>
+          </nav>
+
+          {/* Mobile Buttons */}
+          <div className="md:hidden flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded border-subtle bg-[var(--bg-surface)] text-[var(--text-secondary)]"
+              aria-label="Toggle theme"
+            >
+              {darkMode ? <FiSun className="text-sm" /> : <FiMoon className="text-sm" />}
+            </button>
+
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="flex flex-col gap-1.5 p-2"
+              className="p-2 rounded border-subtle bg-[var(--bg-surface)] text-[var(--text-primary)]"
+              aria-label="Toggle menu"
             >
-              <motion.span
-                animate={mobileOpen ? { rotate: 45, y: 6 } : {}}
-                className="w-6 h-0.5 bg-[var(--text-primary)] block"
-              />
-              <motion.span
-                animate={mobileOpen ? { opacity: 0 } : {}}
-                className="w-6 h-0.5 bg-[var(--text-primary)] block"
-              />
-              <motion.span
-                animate={mobileOpen ? { rotate: -45, y: -6 } : {}}
-                className="w-6 h-0.5 bg-[var(--text-primary)] block"
-              />
+              {mobileOpen ? <FiX className="text-base" /> : <FiMenu className="text-base" />}
             </button>
           </div>
         </div>
@@ -113,27 +109,29 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass"
+            transition={{ duration: 0.2 }}
+            className="md:hidden border-subtle-b bg-[var(--bg-surface)]"
           >
-            <div className="px-4 py-4 space-y-3">
+            <div className="px-4 py-4 space-y-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
-                  className={`block px-4 py-2 rounded-lg text-sm font-medium ${
+                  className={`flex items-center justify-between px-3 py-2.5 rounded text-xs font-mono tracking-wide ${
                     location.pathname === link.path
-                      ? 'bg-blue-500/20 text-blue-500'
-                      : 'text-[var(--text-secondary)]'
+                      ? 'bg-[var(--bg-subtle)] text-[var(--text-primary)] font-bold'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  <span className="text-[var(--text-muted)]">{link.code}</span>
                 </Link>
               ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </header>
   )
 }
