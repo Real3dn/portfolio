@@ -81,12 +81,18 @@ export default function About() {
                 Full-Stack Engineer based in Iraq
               </h2>
               <div className="space-y-4 text-sm text-[var(--text-secondary)] leading-relaxed">
-                <p>
-                  Computer engineer specialized in full-stack web development with deep interest in building modern web applications, robust APIs, and performant user interfaces.
-                </p>
-                <p>
+                              <p>
+                I'm a computer engineer specialized in full-stack web developer with experience of 
+                building modern web applications.
+              </p>
+              <p>
                   Experienced across modern frontend frameworks like React and Vite as well as Python and PHP backend stacks (Flask, Django, Laravel, MySQL, SQLite).
                 </p>
+              <p>
+                I enjoy coding.
+              </p>
+
+                
               </div>
             </div>
 
