@@ -4,7 +4,7 @@ import frontcommerceImg from '../assets/screenshots/frontcommerce.png'
 import frontcommerce1Img from '../assets/screenshots/frontcommerce1.png'
 import proexamImg from '../assets/screenshots/proexam.png'
 import whattowatch from '../assets/screenshots/whattowatch.png'
-
+import carrentalimg from '../assets/screenshots/carrental.png'
 export const projects = [
       {
     id: 1,
@@ -47,8 +47,18 @@ export const projects = [
     github: 'https://github.com/Real3dn/WhatToWatch',
     //live: 'https://poetic-khapse-f62ada.netlify.app/home',
   },
+  {
+    id:5,
+    title: 'Car Renting Management',
+    description: "Full-Stack web application for managing cars",
+    icon: '',
+    screenshot: carrentalimg,
+    technologies: ['React','Python','MySQL','TailwindCSS'],
+    //github: '',
+    
+  },
     {
-    id: 5,
+    id: 6,
     title: 'E-Commerce Frontend',
     description: 'Online Store Front.',
     icon: '🛍️',
@@ -58,7 +68,7 @@ export const projects = [
     live: 'https://poetic-khapse-f62ada.netlify.app/home',
   },
   {
-    id: 6,
+    id: 7,
     title: 'Sounder Recorder',
     description: 'Robust FLAC Voice Recorder',
     icon: '🎤',
