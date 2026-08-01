@@ -5,9 +5,12 @@ import frontcommerce1Img from '../assets/screenshots/frontcommerce1.png'
 import proexamImg from '../assets/screenshots/proexam.png'
 import whattowatch from '../assets/screenshots/whattowatch.png'
 import carrentalimg from '../assets/screenshots/carrental.png'
+import cyberpunkImg from '../assets/screenshots/cyberpunk.png'
+import menuflowImg from '../assets/screenshots/menuflow_iq.png'
+
 export const projects = [
-      {
-    id: 1,
+  {
+    id: 2,
     title: 'Event Booking System',
     description: 'Full-featured online booking system with ability to create, edit and delete events.',
     icon: '📝',
@@ -17,7 +20,7 @@ export const projects = [
     live: 'https://real3dneventbooking.netlify.app/',
   },
   {
-    id: 2,
+    id: 3,
     title: 'E-Commerce Application',
     description: 'Full Stack E-Commerce Web Application.',
     icon: '🛍️',
@@ -56,6 +59,26 @@ export const projects = [
     technologies: ['React','Python','MySQL','TailwindCSS'],
     //github: '',
     
+  },
+    {
+    id: 1,
+    title: 'MenuFlow IQ - Restaurant SaaS',
+    description: 'Smart Restaurant SaaS platform built for local restaurants in Iraq (Baghdad, Erbil, Basra). Features dual currency (IQD د.ع / USD $), bilingual AR/EN UI, instant WhatsApp order dispatch, live Kitchen Display Board (KDS), and revenue analytics.',
+    icon: '🍲',
+    screenshot: menuflowImg,
+    technologies: ['JavaScript (ES6+)', 'Web Audio API', 'HTML5 Canvas', 'CSS Glassmorphism', 'Bilingual LTR/RTL', 'Vite'],
+    github: 'https://github.com/Real3dn/menuflow-iq-saas',
+    live: null,
+  },
+  {
+    id: 2,
+    title: 'Cyberpunk Command Center',
+    description: 'Interactive Sci-Fi HUD & Audio/Visual Studio featuring Web Audio API sound synthesizer, 60 FPS HTML5 Canvas particle visualizer, live telemetry monitoring, tactical radar, and an interactive Cyber Terminal CLI.',
+    icon: '⚡',
+    screenshot: cyberpunkImg,
+    technologies: ['JavaScript (ES6+)', 'Web Audio API', 'HTML5 Canvas', 'CSS Glassmorphism', 'Vite'],
+    github: 'https://github.com/Real3dn/cyberpunk-command-center',
+    live: null,
   },
     {
     id: 6,

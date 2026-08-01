@@ -36,7 +36,7 @@ export default function Navbar() {
           
           {/* Logo & Status */}
           <Link to="/" className="flex items-center gap-3 group">
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-primary)] group-hover:text-neutral-400 transition-colors">
+            <span className="font-mono text-3xl font-bold uppercase tracking-wider text-[var(--text-primary)] group-hover:text-neutral-700 transition-colors">
               Real3dn
             </span>
             <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono border-subtle bg-[var(--bg-subtle)] text-[var(--text-muted)]">

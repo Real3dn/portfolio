@@ -86,7 +86,7 @@ export default function About() {
                 building modern web applications.
               </p>
               <p>
-                  Experienced across modern frontend frameworks like React and Vite as well as Python and PHP backend stacks (Flask, Django, Laravel, MySQL, SQLite).
+                  I have experience across modern frontend frameworks like React and Vite as well as Python and PHP backend stacks (Flask, Django, Laravel, MySQL, SQLite).
                 </p>
               <p>
                 I enjoy coding.
