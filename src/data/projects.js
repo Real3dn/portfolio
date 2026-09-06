@@ -7,7 +7,7 @@ import whattowatch from '../assets/screenshots/whattowatch.png'
 import carrentalimg from '../assets/screenshots/carrental.png'
 import cyberpunkImg from '../assets/screenshots/cyberpunk.png'
 import menuflowImg from '../assets/screenshots/menuflow_iq.png'
-
+import digitalaquariumImg from '../assets/screenshots/digitalaquarium.png'
 export const projects = [
   {
     id: 2,
@@ -50,8 +50,18 @@ export const projects = [
     github: 'https://github.com/Real3dn/WhatToWatch',
     //live: 'https://poetic-khapse-f62ada.netlify.app/home',
   },
+          {
+    id: 5,
+    title: 'Digital Aquarium',
+    description: 'Digital simulation of hunter and prey using Python.',
+    icon: '📚',
+    screenshot: digitalaquariumImg,
+    technologies: ['Python'],
+    github: 'https://github.com/Real3dn/digital-aquarium',
+    //live: 'https://poetic-khapse-f62ada.netlify.app/home',
+  },
   {
-    id:5,
+    id:6,
     title: 'Car Renting Management',
     description: "Full-Stack web application for managing cars",
     icon: '',
