@@ -1,166 +1,119 @@
-import { motion } from 'framer-motion'
 import SkillCard from '../components/SkillCard'
 import { skills } from '../data/skills'
-import BackgroundGrid from '../components/BackgroundGrid'
 import { FiCheckCircle } from 'react-icons/fi'
 
 const experience = [
   {
-    period: '2026 — PRESENT',
+    period: '2026 - Present',
     role: 'Full-Stack Developer',
-    organization: 'Freelance & Independent Software',
-    description: 'Engineering web applications, RESTful APIs, and custom database backends for client platforms using React, Flask, Django, and MySQL.',
+    organization: 'Independent & Client Projects',
+    description: 'Developing full-stack web applications, REST APIs, and database schemas with React, Python (Flask and Django), and MySQL.',
   },
   {
-    period: '2024 — 2025',
-    role: 'Frontend Web Engineer',
-    organization: 'Web Architecture & E-Commerce Labs',
-    description: 'Designed and built e-commerce interfaces, custom React frontend design systems, and state management layers.',
+    period: '2024 - 2025',
+    role: 'Web Application Developer',
+    organization: 'Web Platforms & Client Projects',
+    description: 'Built customer-facing interfaces, responsive layouts, and state workflows using React, JavaScript, and Tailwind CSS.',
   },
   {
-    period: '2022 — 2024',
-    role: 'Backend & Database Engineer',
-    organization: 'API Systems & Services',
-    description: 'Developed RESTful API architectures, database schemas, and backend service integrations using Flask, PHP, and MySQL.',
+    period: '2022 - 2024',
+    role: 'Backend & Database Systems',
+    organization: 'API & Service Development',
+    description: 'Designed relational database schemas, structured SQL queries, and integrated backend endpoints with Python and PHP.',
   },
   {
-    period: '2021 — 2022',
-    role: 'Junior Software Engineer',
-    organization: 'Core Web Development',
-    description: 'Started engineering path focused on web standards, JavaScript algorithms, and relational database basics.',
+    period: '2021 - 2022',
+    role: 'Computer Engineering Foundation',
+    organization: 'Undergraduate Studies & Systems',
+    description: 'Studied algorithms, computer architecture, data structures, and relational database foundations.',
   },
 ]
 
-const engineeringValues = [
-  'Clean code architecture & modular file organization',
-  'Type safety, explicit state management & predictable logic',
-  'Minimalist UI with focus on typography and optical alignment',
-  'Performance-first rendering and fast database queries',
-]
 
 export default function About() {
   return (
-    <div className="relative min-h-screen pt-28 pb-24 px-4 sm:px-6 lg:px-8">
-      <BackgroundGrid />
-
+    <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="pb-12 border-subtle-b mb-16"
-        >
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">
-            <span>Engineering Profile</span>
-            <span>//</span>
-            <span>Biography & Background</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
+        <header className="pb-10 border-subtle-b mb-12">
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
             About & Experience
           </h1>
-        </motion.div>
+          <p className="text-base sm:text-lg text-[var(--text-secondary)] mt-2 max-w-2xl">
+            Background, technical values, and experience timeline.
+          </p>
+        </header>
 
-        {/* Asymmetric 2-Column Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-24">
+        {/* 2-Column Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
           
-          {/* Bio & Philosophy (Left 5 Cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: -15 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="lg:col-span-5 space-y-8"
-          >
-            <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-[var(--text-muted)] block mb-3">
+          {/* Bio & Focus (Left 5 Cols) */}
+          <div className="lg:col-span-5 space-y-8">
+            <section className="space-y-4">
+              <h2 className="text-lg font-bold tracking-tight text-[var(--text-primary)]">
                 Background
-              </span>
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)] mb-4">
-                Full-Stack Engineer based in Iraq
               </h2>
-              <div className="space-y-4 text-sm text-[var(--text-secondary)] leading-relaxed">
-                              <p>
-                I'm a computer engineer specialized in full-stack web developer with experience of 
-                building modern web applications.
-              </p>
-              <p>
-                  I have experience across modern frontend frameworks like React and Vite as well as Python and PHP backend stacks (Flask, Django, Laravel, MySQL, SQLite).
+              <div className="space-y-3.5 text-sm text-[var(--text-secondary)] leading-relaxed">
+                <p>
+                  I am a computer engineer and full-stack developer based in Iraq. My work centers on constructing dependable web applications and data-driven systems.
                 </p>
-              <p>
-                I enjoy coding.
-              </p>
-
-                
+                <p>
+                  My toolkit combines modern component architecture on the frontend with React and Vite, paired with Python backend services using Flask and Django, as well as PHP and Laravel.
+                </p>
+                <p>
+                  Whether structuring a bilingual restaurant platform with dual currency or designing a relational schema for scheduling events, I prioritize predictable data flow and clear interfaces.
+                </p>
               </div>
-            </div>
+            </section>
 
-            {/* Core Values */}
-            <div className="surface-card rounded-xl p-6 space-y-4">
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-primary)] block">
-                Engineering Values
-              </span>
-              <ul className="space-y-3">
-                {engineeringValues.map((value, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs text-[var(--text-secondary)]">
-                    <FiCheckCircle className="text-emerald-500 text-sm shrink-0 mt-0.5" />
-                    <span>{value}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
 
-          {/* Timeline / Changelog (Right 7 Cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: 15 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="lg:col-span-7 space-y-8"
-          >
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--text-muted)] block">
-              Experience & History Log
-            </span>
+          </div>
 
-            <div className="space-y-6">
-              {experience.map((item, index) => (
-                <div 
-                  key={index}
-                  className="surface-card rounded-xl p-6 relative group border-subtle hover:border-[var(--border-strong)] transition-all"
+          {/* Timeline (Right 7 Cols) */}
+          <section className="lg:col-span-7 space-y-6">
+            <h2 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+              Experience & Background Timeline
+            </h2>
+
+            <div className="space-y-4">
+              {experience.map((item) => (
+                <article 
+                  key={item.period + item.role}
+                  className="surface-card rounded-lg p-5 border-subtle"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                    <span className="font-mono text-xs font-bold text-[var(--text-primary)]">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
+                    <h3 className="text-sm font-bold text-[var(--text-primary)]">
                       {item.role}
-                    </span>
-                    <span className="font-mono text-[10px] px-2 py-0.5 rounded border-subtle bg-[var(--bg-subtle)] text-[var(--text-muted)] w-fit">
+                    </h3>
+                    <span className="text-xs font-mono text-[var(--text-muted)]">
                       {item.period}
                     </span>
                   </div>
 
-                  <span className="font-mono text-xs text-[var(--text-muted)] block mb-3">
+                  <span className="text-xs text-[var(--text-secondary)] block mb-2 font-medium">
                     {item.organization}
                   </span>
 
-                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                     {item.description}
                   </p>
-                </div>
+                </article>
               ))}
             </div>
-          </motion.div>
+          </section>
 
         </div>
 
         {/* Technical Capability Grid */}
         <section className="pt-12 border-subtle-t">
-          <div className="mb-8">
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--text-muted)] block mb-2">
-              Full Technology Index
-            </span>
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">
+          <div className="mb-6">
+            <h2 className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
               Proficient Languages & Frameworks
             </h2>
+            <p className="text-xs text-[var(--text-muted)] mt-1">
+              Complete index of languages, databases, and development tooling.
+            </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">

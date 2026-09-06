@@ -1,114 +1,78 @@
-import { motion } from 'framer-motion'
-import { FiMail, FiPhone, FiMapPin, FiGithub, FiCopy, FiCheck, FiArrowUpRight } from 'react-icons/fi'
 import { useState } from 'react'
-import BackgroundGrid from '../components/BackgroundGrid'
+import { FiMail, FiPhone, FiMapPin, FiGithub, FiCopy, FiCheck, FiArrowUpRight } from 'react-icons/fi'
 
-const contactInfo = [
+const contactMethods = [
   {
-    icon: <FiMail className="text-base" />,
-    label: 'Direct Email',
+    icon: <FiMail className="text-lg" />,
+    title: 'Email',
     value: 'realadnanosama@gmail.com',
     href: 'mailto:realadnanosama@gmail.com',
     copyable: true,
+    actionLabel: 'Send email',
   },
   {
-    icon: <FiPhone className="text-base" />,
-    label: 'WhatsApp / Mobile',
-    value: '+(964) 771 637 9711',
+    icon: <FiPhone className="text-lg" />,
+    title: 'WhatsApp / Mobile',
+    value: '+964 771 637 9711',
     href: 'https://wa.me/9647716379711',
     copyable: true,
+    actionLabel: 'Open WhatsApp',
   },
   {
-    icon: <FiMapPin className="text-base" />,
-    label: 'Location Base',
+    icon: <FiMapPin className="text-lg" />,
+    title: 'Location',
     value: 'Iraq (UTC+3)',
     href: null,
     copyable: false,
+    actionLabel: null,
   },
 ]
 
-const socialLinks = [
-  { icon: <FiGithub />, label: 'GitHub Profile', href: 'https://github.com/Real3dn' },
-]
-
 export default function Contact() {
-  const [copiedIndex, setCopiedIndex] = useState(null)
+  const [copiedValue, setCopiedValue] = useState(null)
 
-  const handleCopy = (text, index) => {
+  const handleCopy = (text) => {
     navigator.clipboard.writeText(text)
-    setCopiedIndex(index)
-    setTimeout(() => setCopiedIndex(null), 2000)
+    setCopiedValue(text)
+    setTimeout(() => setCopiedValue(null), 2000)
   }
 
   return (
-    <div className="relative min-h-screen pt-28 pb-24 px-4 sm:px-6 lg:px-8">
-      <BackgroundGrid />
-
+    <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="pb-12 border-subtle-b mb-12"
-        >
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--text-muted)] mb-2">
-            <span>Communication</span>
-            <span>//</span>
-            <span>Direct Inquiries</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
-            Get In Touch
+        <header className="pb-10 border-subtle-b mb-12">
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
+            Contact
           </h1>
-          <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-3 max-w-xl font-normal">
-            Available for software engineering roles, technical freelance contracts, and custom web application projects.
+          <p className="text-base sm:text-lg text-[var(--text-secondary)] mt-2 max-w-xl">
+            Reach out regarding software engineering roles, web application contracts, or technical inquiries.
           </p>
-        </motion.div>
+        </header>
 
-        {/* System Availability Status */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="surface-card rounded-xl p-4 mb-12 flex items-center justify-between gap-4"
-        >
-          <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
-            <span className="font-mono text-xs font-semibold text-[var(--text-primary)]">
-              Status: Open to new projects & roles
-            </span>
-          </div>
-          <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-wider hidden sm:inline">
-            Response time &lt; 24h
-          </span>
-        </motion.div>
-
-        {/* Contact Info Cards */}
+        {/* Contact Methods Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {contactInfo.map((info, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.15 + index * 0.05 }}
-              className="surface-card rounded-xl p-6 relative group flex flex-col justify-between"
+          {contactMethods.map((method) => (
+            <div
+              key={method.title}
+              className="surface-card rounded-lg p-6 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-2 rounded bg-[var(--bg-subtle)] border-subtle text-[var(--text-secondary)]">
-                    {info.icon}
+                  <div className="text-[var(--text-secondary)]" aria-hidden="true">
+                    {method.icon}
                   </div>
 
-                  {info.copyable && (
+                  {method.copyable && (
                     <button
-                      onClick={() => handleCopy(info.value, index)}
-                      className="p-1.5 rounded border-subtle bg-[var(--bg-subtle)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
-                      title="Copy to clipboard"
+                      onClick={() => handleCopy(method.value)}
+                      className="p-1.5 rounded border-subtle bg-[var(--bg-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+                      title={`Copy ${method.title}`}
+                      aria-label={`Copy ${method.title}`}
                     >
-                      {copiedIndex === index ? (
-                        <FiCheck className="text-emerald-500 text-xs" />
+                      {copiedValue === method.value ? (
+                        <FiCheck className="text-emerald-600 dark:text-emerald-400 text-xs" />
                       ) : (
                         <FiCopy className="text-xs" />
                       )}
@@ -116,62 +80,57 @@ export default function Contact() {
                   )}
                 </div>
 
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--text-muted)] block mb-1">
-                  {info.label}
+                <span className="text-xs font-mono text-[var(--text-muted)] block mb-1">
+                  {method.title}
                 </span>
 
-                {info.href ? (
-                  <a
-                    href={info.href}
-                    target={info.href.startsWith('http') ? '_blank' : undefined}
-                    rel="noopener noreferrer"
-                    className="text-xs sm:text-sm font-semibold font-mono text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors break-all inline-flex items-center gap-1"
-                  >
-                    <span>{info.value}</span>
-                    <FiArrowUpRight className="text-xs shrink-0" />
-                  </a>
-                ) : (
-                  <span className="text-xs sm:text-sm font-semibold font-mono text-[var(--text-primary)]">
-                    {info.value}
-                  </span>
-                )}
+                <div className="text-sm font-semibold text-[var(--text-primary)]">
+                  {method.href ? (
+                    <a
+                      href={method.href}
+                      target={method.href.startsWith('http') ? '_blank' : undefined}
+                      rel="noopener noreferrer"
+                      className="hover:text-[var(--accent)] transition-colors break-all inline-flex items-center gap-1"
+                    >
+                      <span>{method.value}</span>
+                      <FiArrowUpRight className="text-xs shrink-0" />
+                    </a>
+                  ) : (
+                    <span>{method.value}</span>
+                  )}
+                </div>
               </div>
-            </motion.div>
+
+              {/* Screen reader notification for copy status */}
+              <div className="sr-only" aria-live="polite">
+                {copiedValue === method.value ? `Copied ${method.title} to clipboard` : ''}
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Social Profile Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="surface-card rounded-xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
-        >
-          <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--text-primary)] block">
-              Version Control & Source Code
-            </span>
-            <span className="text-xs text-[var(--text-secondary)] font-mono">
-              Inspect open-source repositories and contributions.
-            </span>
+        {/* Source Code / GitHub */}
+        <section className="surface-card rounded-lg p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <h2 className="text-sm font-semibold text-[var(--text-primary)]">
+              GitHub Repositories
+            </h2>
+            <p className="text-xs text-[var(--text-secondary)]">
+              Browse public source code repositories, commits, and personal software projects.
+            </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded text-xs font-mono font-semibold border-subtle bg-[var(--bg-subtle)] text-[var(--text-primary)] hover:border-[var(--border-strong)] transition-all"
-              >
-                {social.icon}
-                <span>{social.label}</span>
-                <FiArrowUpRight />
-              </a>
-            ))}
-          </div>
-        </motion.div>
+          <a
+            href="https://github.com/Real3dn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-xs font-semibold border-subtle bg-[var(--bg-subtle)] text-[var(--text-primary)] hover:border-[var(--border-strong)] transition-colors w-fit"
+          >
+            <FiGithub className="text-sm" />
+            <span>github.com/Real3dn</span>
+            <FiArrowUpRight className="text-xs" />
+          </a>
+        </section>
 
       </div>
     </div>
