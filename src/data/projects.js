@@ -1,12 +1,12 @@
-import ecommerceImg from '../assets/screenshots/ecommerce.png'
-import eventbookingImg from '../assets/screenshots/eventbooking.png'
-import frontcommerceImg from '../assets/screenshots/frontcommerce.png'
-import proexamImg from '../assets/screenshots/proexam.png'
-import whattowatch from '../assets/screenshots/whattowatch.png'
-import carrentalimg from '../assets/screenshots/carrental.png'
-import cyberpunkImg from '../assets/screenshots/cyberpunk.png'
-import menuflowImg from '../assets/screenshots/menuflow_iq.png'
-import digitalaquariumImg from '../assets/screenshots/digitalaquarium.png'
+import ecommerceImg from '../assets/screenshots/ecommerce.webp'
+import eventbookingImg from '../assets/screenshots/eventbooking.webp'
+import frontcommerceImg from '../assets/screenshots/frontcommerce.webp'
+import proexamImg from '../assets/screenshots/proexam.webp'
+import whattowatch from '../assets/screenshots/whattowatch.webp'
+import carrentalimg from '../assets/screenshots/carrental.webp'
+import cyberpunkImg from '../assets/screenshots/cyberpunk.webp'
+import menuflowImg from '../assets/screenshots/menuflow_iq.webp'
+import digitalaquariumImg from '../assets/screenshots/digitalaquarium.webp'
 
 export const projects = [
   {

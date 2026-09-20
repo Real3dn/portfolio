@@ -26,6 +26,7 @@ export default function ProjectCard({ project, index, isFeatured = false }) {
               className="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-[1.01]"
               onError={() => setImageError(true)}
               loading="lazy"
+              decoding="async"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center p-6 text-[var(--text-muted)]">
