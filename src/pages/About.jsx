@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import SkillCard from '../components/SkillCard'
 import { skills } from '../data/skills'
 import { FiCheckCircle } from 'react-icons/fi'
@@ -56,13 +57,22 @@ export default function About() {
               </h2>
               <div className="space-y-3.5 text-sm text-[var(--text-secondary)] leading-relaxed">
                 <p>
-                  I am a computer engineer and full-stack developer based in Iraq. My work centers on constructing dependable web applications and data-driven systems.
+                  I am Adnan, a full-stack developer and computer engineer.
                 </p>
                 <p>
-                  My toolkit combines modern component architecture on the frontend with React and Vite, paired with Python backend services using Flask and Django, as well as PHP and Laravel.
+                  I&apos;ve been coding for some years now.
                 </p>
                 <p>
-                  Whether structuring a bilingual restaurant platform with dual currency or designing a relational schema for scheduling events, I prioritize predictable data flow and clear interfaces.
+                  I like to build stuff. If you wanna see some of what I&apos;ve built, check out my{' '}
+                  <Link to="/projects" className="text-[var(--accent)] hover:underline font-medium">
+                    projects
+                  </Link>.
+                </p>
+                <p>
+                  If you have anything in mind, feel free to{' '}
+                  <Link to="/contact" className="text-[var(--accent)] hover:underline font-medium">
+                    contact me
+                  </Link>.
                 </p>
               </div>
             </section>

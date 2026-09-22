@@ -29,8 +29,7 @@ export default function Home() {
               </div>
 
               <p className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
-                I build reliable web applications, relational database architectures, and responsive user interfaces. 
-                My focus spans React on the client, Python services with Flask and Django on the backend, and relational database modeling with MySQL and SQLite.
+                I build web applications and things like that.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
