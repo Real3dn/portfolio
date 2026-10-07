@@ -1,5 +1,6 @@
 import ecommerceImg from '../assets/screenshots/ecommerce.webp'
 import eventbookingImg from '../assets/screenshots/eventbooking.webp'
+import schoolManagementImg from '../assets/screenshots/schoolmanagement.webp'
 import frontcommerceImg from '../assets/screenshots/frontcommerce.webp'
 import proexamImg from '../assets/screenshots/proexam.webp'
 import whattowatch from '../assets/screenshots/whattowatch.webp'
@@ -28,6 +29,16 @@ export const projects = [
     technologies: ['React', 'Flask', 'MySQL', 'TailwindCSS'],
     github: 'https://github.com/Real3dn/EventBookingSystem',
     live: 'https://real3dneventbooking.netlify.app/',
+  },
+  {
+    id: 3,
+    title: 'School Management System',
+    category: 'Financial Management',
+    description: 'Financial management system for schools featuring secure authentication, robust data modeling with Prisma, and a responsive TailwindCSS interface.',
+    screenshot: schoolManagementImg,
+    technologies: ['Next.js', 'Prisma', 'TailwindCSS', 'NextAuth'],
+    github: 'https://github.com/Real3dn/SchoolManagementSystem',
+    live: 'https://financialschoolmanagement.vercel.app',
   },
 
   {
