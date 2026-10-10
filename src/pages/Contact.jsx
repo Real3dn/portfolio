@@ -5,8 +5,8 @@ const contactMethods = [
   {
     icon: <FiMail className="text-lg" />,
     title: 'Email',
-    value: 'realadnanosama@gmail.com',
-    href: 'mailto:realadnanosama@gmail.com',
+    value: 'adnanalqaba@gmail.com',
+    href: 'mailto:adnanalqaba@gmail.com',
     copyable: true,
     actionLabel: 'Send email',
   },
